@@ -3,6 +3,7 @@ package com.pharmacie.model;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.List;
 
 public class Customer {
     private String id;
@@ -13,6 +14,15 @@ public class Customer {
     private List<Purchase> purchaseHistory;
 
     public Customer(String firstName, String lastName, String phoneNumber) {
+        if (firstName == null || lastName == null || phoneNumber == null) {
+            throw new IllegalArgumentException("First name, last name, and phone number cannot be null");
+        }
+        if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty()) {
+            throw new IllegalArgumentException("First name, last name, and phone number cannot be empty");
+        }
+        if (!phoneNumber.matches("\\d{10}")) {
+            throw new IllegalArgumentException("Phone number must be 10 digits long");
+        }
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;

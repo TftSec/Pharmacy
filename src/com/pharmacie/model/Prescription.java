@@ -10,7 +10,7 @@ public class Prescription {
     private final String id;
     private LocalDate prescriptionDate;
     private Customer customer;
-    private final List<PrescriptionItem> items;
+    private List<PrescriptionItem> items;
 
     public Prescription(LocalDate prescriptionDate, Customer customer) {
         this.id = UUID.randomUUID().toString();
